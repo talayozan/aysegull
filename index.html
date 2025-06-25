@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benim Balıma 💖 </title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #e46a8f;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            transition: background-color 1s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            text-align: center;
+            max-width: 90%;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+        button {
+            background-color: white;
+            color: #e46a8f;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            max-width: 80%;
+        }
+        button:hover {
+            background-color: #f8d5df;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            max-width: 90%;
+            margin: auto;
+            font-size: 1.5rem;
+            white-space: pre-line;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .hearts, .stars, .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .heart, .star, .confetti-piece {
+            position: absolute;
+            background-color: white;
+        }
+        .heart {
+            width: 20px;
+            height: 20px;
+            transform: rotate(45deg);
+            animation: float 5s linear infinite;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(45deg) scale(1); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(45deg) scale(1.5); opacity: 0; }
+        }
+        .star {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: white;
+            animation: twinkle 2s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        .confetti-piece {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: pink;
+            animation: confetti-fall 4s linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            button {
+                font-size: 1rem;
+                padding: 12px 24px;
+            }
+            .message {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="title">Bazen yollar kesişir...</h1>
+        <button id="startButton">Keşfetmeye Başla</button>
+        <p class="message hidden" id="message"></p>
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+    <div class="stars" id="stars"></div>
+    <div class="confetti" id="confetti"></div>
+
+    <audio id="music" src="music.mp3"></audio>
+
+    <script>
+        const button = document.getElementById('startButton');
+        const title = document.getElementById('title');
+        const message = document.getElementById('message');
+        const music = document.getElementById('music');
+        const heartsContainer = document.getElementById('hearts');
+        const starsContainer = document.getElementById('stars');
+        const confettiContainer = document.getElementById('confetti');
+
+        const stages = [
+            { color: '#f8d5df', text: `Bazen yollar kesişir... \nBelki bu küçük bir hikayenin başlangıcıdır... 🎈` },
+            { color: '#f2acc7', text: `Seni tanımak, aceleye sığacak bir şey değil.\nÇünkü en güzel şeyler zaman ister... 💫` },
+            { color: '#f49db2', text: `Belki bu bir başlangıçtır,\nBelki de çoktan başladık bile... ✨` },
+            { color: '#f8d5df', text: `Sana olan sevgim,\nsenin güzelliğin beni küçük bir şairliğe itti...\n\nİşte ufak bir şiir denemem:\n\nA - Aslında en başından beri farklıydın\nY - Yüzündeki gülümseme bana huzur getirdi\nŞ - Şefkatin gizliden gizliye sarhoş etti beni\nE - En derin yerime dokundu gözlerin\nG - Gönlüm hep sana kaydı fark etmeden\nÜ - Üşüyen kalbimi senin sıcaklığın ısıttı\nL - Lütfen bu hikayeyi birlikte yazalım... 💌` }
+        ];
+
+        let stageIndex = 0;
+
+        button.addEventListener('click', () => {
+            document.body.style.backgroundColor = stages[0].color;
+            music.play();
+            button.style.display = 'none';
+            title.style.opacity = 0;
+
+            setTimeout(() => {
+                title.style.display = 'none';
+                message.classList.remove('hidden');
+                message.style.opacity = 1;
+                typeWriter(stages[stageIndex].text, 0, () => { addNextButton(); });
+            }, 1000);
+
+            for (let i = 0; i < 20; i++) { createHeart(); }
+            for (let i = 0; i < 50; i++) { createStar(); }
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+                if (document.querySelector('.heart')) { createHeart(); }
+            }, 5000);
+        }
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            starsContainer.appendChild(star);
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const piece = document.createElement('div');
+                piece.classList.add('confetti-piece');
+                piece.style.left = Math.random() * 100 + 'vw';
+                piece.style.animationDuration = (3 + Math.random() * 2) + 's';
+                confettiContainer.appendChild(piece);
+
+                setTimeout(() => { piece.remove(); }, 4000);
+            }
+        }
+
+        function typeWriter(text, index, callback) {
+            if (index < text.length) {
+                message.innerHTML += text.charAt(index);
+                setTimeout(() => { typeWriter(text, index + 1, callback); }, 50);
+            } else if (callback) { callback(); }
+        }
+
+        function addNextButton() {
+            if (stageIndex < stages.length - 1) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = "Devam Et";
+                nextButton.style.marginTop = '20px';
+                nextButton.addEventListener('click', () => {
+                    stageIndex++;
+                    document.body.style.backgroundColor = stages[stageIndex].color;
+                    message.innerHTML = '';
+                    nextButton.remove();
+                    typeWriter(stages[stageIndex].text, 0, () => { addNextButton(); });
+                });
+                document.querySelector('.container').appendChild(nextButton);
+            } else {
+                const finalButton = document.createElement('button');
+                finalButton.textContent = "Belki de bir sonraki sayfayı birlikte yazarız? 💫";
+                finalButton.style.marginTop = '20px';
+                finalButton.addEventListener('click', () => {
+                    const texts = ["Zaten yazıyoruz bile... ❤️", "Yavaş yavaş yazıyoruz...", "Belki de çoktan başladık...", "Ben zaten seni yazıyordum..."];
+                    finalButton.textContent = texts[Math.floor(Math.random() * texts.length)];
+                    createConfetti();
+                });
+                document.querySelector('.container').appendChild(finalButton);
+            }
+        }
+    </script>
+
+</body>
+</html>
