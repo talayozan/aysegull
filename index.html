@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benim Balıma 💖 </title>
+    <title>Benim Balıma 💖</title>
     <style>
         body {
             margin: 0;
@@ -16,7 +16,7 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            transition: background-color 1s ease;
+            transition: background-color 1s ease, color 1s ease;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -53,7 +53,7 @@
             font-size: 1.5rem;
             white-space: pre-line;
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 1s ease, color 1s ease;
         }
         .hearts, .stars, .confetti {
             position: fixed;
@@ -168,16 +168,17 @@
         const confettiContainer = document.getElementById('confetti');
 
         const stages = [
-            { color: '#f8d5df', text: `Bazen yollar kesişir... \nBelki bu küçük bir hikayenin başlangıcıdır... 🎈` },
-            { color: '#f2acc7', text: `Seni tanımak, aceleye sığacak bir şey değil.\nÇünkü en güzel şeyler zaman ister... 💫` },
-            { color: '#f49db2', text: `Belki bu bir başlangıçtır,\nBelki de çoktan başladık bile... ✨` },
-            { color: '#f8d5df', text: `Sana olan sevgim,\nsenin güzelliğin beni küçük bir şairliğe itti...\n\nİşte ufak bir şiir denemem:\n\nA - Aslında en başından beri farklıydın\nY - Yüzündeki gülümseme bana huzur getirdi\nŞ - Şefkatin gizliden gizliye sarhoş etti beni\nE - En derin yerime dokundu gözlerin\nG - Gönlüm hep sana kaydı fark etmeden\nÜ - Üşüyen kalbimi senin sıcaklığın ısıttı\nL - Lütfen bu hikayeyi birlikte yazalım... 💌` }
+            { color: '#f8d5df', text: `Bazen yollar kesişir... \nBelki bu küçük bir hikayenin başlangıcıdır... 🎈`, textColor: '#e46a8f' },
+            { color: '#f2acc7', text: `Seni tanımak, aceleye sığacak bir şey değil.\nÇünkü en güzel şeyler zaman ister... 💫`, textColor: '#ffffff' },
+            { color: '#f49db2', text: `Belki bu bir başlangıçtır,\nBelki de çoktan başladık bile... ✨`, textColor: '#ffffff' },
+            { color: '#f8d5df', text: `Sana olan sevgim,\nsenin güzelliğin beni küçük bir şairliğe itti...\n\nİşte ufak bir şiir denemem:\n\nA - Aslında en başından beri farklıydın\nY - Yüzündeki gülümseme bana huzur getirdi\nŞ - Şefkatin gizliden gizliye sarhoş etti beni\nE - En derin yerime dokundu gözlerin\nG - Gönlüm hep sana kaydı fark etmeden\nÜ - Üşüyen kalbimi senin sıcaklığın ısıttı\nL - Lütfen bu hikayeyi birlikte yazalım... 💌`, textColor: '#e46a8f' }
         ];
 
         let stageIndex = 0;
 
         button.addEventListener('click', () => {
             document.body.style.backgroundColor = stages[0].color;
+            message.style.color = stages[0].textColor;
             music.play();
             button.style.display = 'none';
             title.style.opacity = 0;
@@ -241,6 +242,7 @@
                 nextButton.addEventListener('click', () => {
                     stageIndex++;
                     document.body.style.backgroundColor = stages[stageIndex].color;
+                    message.style.color = stages[stageIndex].textColor;
                     message.innerHTML = '';
                     nextButton.remove();
                     typeWriter(stages[stageIndex].text, 0, () => { addNextButton(); });
