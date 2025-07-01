@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ayşegül'ü Yakala 🌟</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffd6e0, #c9f0ff);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            background-color: #ffffff;
+            border: 4px solid #ff69b4;
+            border-radius: 20px;
+            width: 100%;
+            height: auto;
+            max-width: 1200px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            margin: 0 10px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: #ff69b4;
+            color: white;
+            font-size: 18px;
+            transition: transform 0.2s;
+            touch-action: manipulation;
+            user-select: none;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background-color: #ff85c1;
+        }
+        #score {
+            user-select: none;
+            -webkit-user-select: none;
+             touch-action: manipulation;
+        }
+
+        #endScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            color: white;
+            display: none;
+        }
+        .mobile-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .mobile-controls button {
+            width: 80px;
+            height: 80px;
+            font-size: 20px;
+            border-radius: 50%;
+            touch-action: manipulation;
+            user-select: none;
+            background-color: #ff69b4;
+            border: 4px solid #ff69b4;
+        }
+        
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="1200" height="700"></canvas>
+    <div class="controls">
+        <button id="startBtn">Başla</button>
+        <button id="pauseBtn">Duraklat</button>
+        <button id="resetBtn">Sıfırla</button>
+    </div>
+    <p id="score">Skor: 0 | Can: 3 | Süre: 0s</p>
+
+    <div class="mobile-controls">
+        <button id="leftBtn"></button>
+        <button id="rightBtn"></button>
+    </div>
+
+    <div id="endScreen">
+        <h1>Oyun Bitti!</h1>
+        <p id="finalScore"></p>
+        <button id="restartBtn">Tekrar Oyna</button>
+    </div>
+
+    <audio id="catchSound" src="catch.mp3"></audio>
+    <audio id="gameOverSound" src="gameover.mp3"></audio>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let player = { x: canvas.width / 2 - 75, y: canvas.height - 150, width: 150, height: 150, speed: 10 };
+        let targets = [];
+        let score = 0;
+        let lives = 3;
+        let time = 0;
+        let isRunning = false;
+        let isPaused = false;
+        let keys = {};
+        let spawnInterval, timeInterval;
+        let fallingSpeedMultiplier = 1;
+        let isDoublePoints = false;
+
+        let moveLeft = false;
+        let moveRight = false;
+
+        const playerImg = new Image();
+        playerImg.src = 'ozan.png';
+
+        const aysegulImg = new Image();
+        aysegulImg.src = 'aysegul.png';
+
+        const kalpImg = new Image();
+        kalpImg.src = 'kalp.png';
+
+        const catchSound = document.getElementById('catchSound');
+        const gameOverSound = document.getElementById('gameOverSound');
+
+        document.addEventListener('keydown', (e) => { keys[e.key] = true; });
+        document.addEventListener('keyup', (e) => { keys[e.key] = false; });
+
+        // Sol buton - mobil ve masaüstü full stabil
+        const leftBtn = document.getElementById('leftBtn');
+        leftBtn.addEventListener('touchstart', () => { moveLeft = true; });
+        leftBtn.addEventListener('touchend', () => { moveLeft = false; });
+        leftBtn.addEventListener('touchcancel', () => { moveLeft = false; });
+        leftBtn.addEventListener('mousedown', () => { moveLeft = true; });
+        leftBtn.addEventListener('mouseup', () => { moveLeft = false; });
+        leftBtn.addEventListener('mouseleave', () => { moveLeft = false; });
+
+        // Sağ buton - mobil ve masaüstü full stabil
+        const rightBtn = document.getElementById('rightBtn');
+        rightBtn.addEventListener('touchstart', () => { moveRight = true; });
+        rightBtn.addEventListener('touchend', () => { moveRight = false; });
+        rightBtn.addEventListener('touchcancel', () => { moveRight = false; });
+        rightBtn.addEventListener('mousedown', () => { moveRight = true; });
+        rightBtn.addEventListener('mouseup', () => { moveRight = false; });
+        rightBtn.addEventListener('mouseleave', () => { moveRight = false; });
+
+        document.getElementById('startBtn').addEventListener('click', startGame);
+        document.getElementById('pauseBtn').addEventListener('click', pauseGame);
+        document.getElementById('resetBtn').addEventListener('click', resetGame);
+        document.getElementById('restartBtn').addEventListener('click', () => {
+            document.getElementById('endScreen').style.display = 'none';
+            resetGame();
+        });
+
+        function startGame() {
+            if (isRunning) return;
+            isRunning = true;
+            isPaused = false;
+            spawnInterval = setInterval(spawnTarget, 1000);
+            timeInterval = setInterval(() => {
+                if (isRunning && !isPaused) {
+                    time++;
+                    fallingSpeedMultiplier += 0.05;
+                    updateScore();
+                }
+            }, 1000);
+            requestAnimationFrame(gameLoop);
+        }
+
+        function pauseGame() {
+            if (isRunning) {
+                isPaused = !isPaused;
+                document.getElementById('pauseBtn').innerText = isPaused ? 'Devam Et' : 'Duraklat';
+            }
+        }
+
+        function resetGame() {
+            isRunning = false;
+            isPaused = false;
+            clearInterval(spawnInterval);
+            clearInterval(timeInterval);
+            player.x = canvas.width / 2 - 75;
+            targets = [];
+            score = 0;
+            lives = 3;
+            time = 0;
+            fallingSpeedMultiplier = 1;
+            isDoublePoints = false;
+            updateScore();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('pauseBtn').innerText = 'Duraklat';
+        }
+
+        function spawnTarget() {
+            if (!isRunning || isPaused) return;
+
+            let type = 'normal';
+            let random = Math.random();
+            if (random < 0.1) type = '2x';
+            else if (random < 0.2) type = 'buz';
+            else if (random < 0.3) type = 'altin';
+            else if (random < 0.35) type = 'kalp';
+
+            targets.push({
+                x: Math.random() * (canvas.width - 100),
+                y: -100,
+                width: 100,
+                height: 100,
+                speed: (4 + Math.random() * 3),
+                type: type,
+                direction: Math.random() < 0.3 ? (Math.random() < 0.5 ? -1 : 1) : 0
+            });
+        }
+
+        function gameLoop() {
+            if (!isRunning) return;
+
+            if (!isPaused) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if ((keys['ArrowLeft'] || moveLeft) && player.x > 0) player.x -= player.speed;
+                if ((keys['ArrowRight'] || moveRight) && player.x < canvas.width - player.width) player.x += player.speed;
+
+                drawPlayer();
+                updateTargets();
+                drawTargets();
+                checkCollisions();
+            }
+
+            if (isRunning) {
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        function drawPlayer() {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(player.x + player.width / 2, player.y + player.height / 2, player.width / 2, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.clip();
+            ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
+            ctx.restore();
+        }
+
+        function drawTargets() {
+            targets.forEach(t => {
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(t.x + t.width / 2, t.y + t.height / 2, t.width / 2, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.clip();
+
+                if (t.type === 'kalp') {
+                    ctx.drawImage(kalpImg, t.x, t.y, t.width, t.height);
+                } else {
+                    ctx.drawImage(aysegulImg, t.x, t.y, t.width, t.height);
+                }
+                ctx.restore();
+
+                ctx.font = '16px Arial';
+                ctx.textAlign = 'center';
+
+                if (t.type === '2x') { ctx.fillStyle = 'red'; ctx.fillText('2X PUAN', t.x + t.width / 2, t.y + t.height + 20); }
+                if (t.type === 'buz') { ctx.fillStyle = 'blue'; ctx.fillText('BUZ', t.x + t.width / 2, t.y + t.height + 20); }
+                if (t.type === 'altin') { ctx.fillStyle = 'gold'; ctx.fillText('ALTIN', t.x + t.width / 2, t.y + t.height + 20); }
+            });
+        }
+
+        function updateTargets() {
+            targets.forEach(t => {
+                if (t.direction !== 0) {
+                    t.x += t.direction * 5;
+                    if (t.x <= 0 || t.x + t.width >= canvas.width) t.direction *= -1;
+                }
+                t.y += t.speed * fallingSpeedMultiplier;
+            });
+
+            targets = targets.filter(t => {
+                if (t.y > canvas.height) {
+                    lives--;
+                    updateScore();
+                    if (lives <= 0) {
+                        endGame();
+                        return false;
+                    }
+                    return false;
+                }
+                return true;
+            });
+        }
+
+        function checkCollisions() {
+            targets.forEach((t, index) => {
+                if (player.x < t.x + t.width && player.x + player.width > t.x && player.y < t.y + t.height && player.y + player.height > t.y) {
+
+                    if (t.type === '2x') {
+                        isDoublePoints = true;
+                        setTimeout(() => { isDoublePoints = false; }, 5000);
+                    } else if (t.type === 'buz') {
+                        fallingSpeedMultiplier = 0.5;
+                        setTimeout(() => { fallingSpeedMultiplier = 1; }, 3000);
+                    } else if (t.type === 'altin') {
+                        score += isDoublePoints ? 10 : 5;
+                    } else if (t.type === 'kalp') {
+                        lives++;
+                    } else {
+                        score += isDoublePoints ? 2 : 1;
+                    }
+
+                    catchSound.play();
+                    targets.splice(index, 1);
+                    updateScore();
+                }
+            });
+        }
+
+        function updateScore() {
+            document.getElementById('score').innerText = `Skor: ${score} | Can: ${lives} | Süre: ${time}s`;
+        }
+
+        function endGame() {
+            isRunning = false;
+            isPaused = false;
+            clearInterval(spawnInterval);
+            clearInterval(timeInterval);
+            gameOverSound.play();
+            document.getElementById('finalScore').innerText = `Skor: ${score} | Süre: ${time} saniye`;
+            document.getElementById('endScreen').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
