@@ -69,16 +69,20 @@
             justify-content: center;
             margin-top: 20px;
             gap: 30px;
+            flex-wrap: wrap;
         }
         .mobile-controls button {
             width: 80px;
             height: 80px;
-            font-size: 20px;
+            font-size: 0;
             border-radius: 50%;
             touch-action: manipulation;
             user-select: none;
             background-color: #ff69b4;
             border: 4px solid #ff69b4;
+        }
+        .mobile-controls button::after {
+            content: '';
         }
     </style>
 </head>
@@ -91,7 +95,7 @@
     </div>
     <p id="score">Skor: 0 | Can: 3 | Süre: 0s</p>
 
-    <div class="mobile-controls">
+    <div class="mobile-controls" id="mobileControls">
         <button id="leftBtn"></button>
         <button id="rightBtn"></button>
     </div>
@@ -109,7 +113,7 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
-        let player = { x: canvas.width / 2 - 75, y: canvas.height - 150, width: 150, height: 150, speed: 7 };
+        let player = { x: canvas.width / 2 - 75, y: canvas.height - 150, width: 150, height: 150, speed: isMobile() ? 12 : 7 };
         let targets = [];
         let score = 0;
         let lives = 3;
@@ -134,12 +138,11 @@
         kalpImg.src = 'kalp.png';
 
         const catchSound = document.getElementById('catchSound');
-        const gameOverSound = document.getElementById('gameOverSound');
+        const gameOverSound = document.getElementById('gameoverSound');
 
         document.addEventListener('keydown', (e) => { keys[e.key] = true; });
         document.addEventListener('keyup', (e) => { keys[e.key] = false; });
 
-        // Sol buton - mobil ve masaüstü full stabil
         const leftBtn = document.getElementById('leftBtn');
         leftBtn.addEventListener('touchstart', () => { moveLeft = true; });
         leftBtn.addEventListener('touchend', () => { moveLeft = false; });
@@ -148,7 +151,6 @@
         leftBtn.addEventListener('mouseup', () => { moveLeft = false; });
         leftBtn.addEventListener('mouseleave', () => { moveLeft = false; });
 
-        // Sağ buton - mobil ve masaüstü full stabil
         const rightBtn = document.getElementById('rightBtn');
         rightBtn.addEventListener('touchstart', () => { moveRight = true; });
         rightBtn.addEventListener('touchend', () => { moveRight = false; });
@@ -157,6 +159,15 @@
         rightBtn.addEventListener('mouseup', () => { moveRight = false; });
         rightBtn.addEventListener('mouseleave', () => { moveRight = false; });
 
+        window.addEventListener('orientationchange', () => {
+            const mobileControls = document.getElementById('mobileControls');
+            if (window.innerHeight < window.innerWidth) {
+                mobileControls.style.display = 'none';
+            } else {
+                mobileControls.style.display = 'flex';
+            }
+        });
+
         document.getElementById('startBtn').addEventListener('click', startGame);
         document.getElementById('pauseBtn').addEventListener('click', pauseGame);
         document.getElementById('resetBtn').addEventListener('click', resetGame);
@@ -164,6 +175,10 @@
             document.getElementById('endScreen').style.display = 'none';
             resetGame();
         });
+
+        function isMobile() {
+            return /Mobi|Android/i.test(navigator.userAgent);
+        }
 
         function startGame() {
             if (isRunning) return;
