@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sevgimizin 1. Haftası 💞</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Sacramento', cursive;
+            background: radial-gradient(circle at top left, #ff9a9e, #fad0c4, #fad0c4);
+            overflow-x: hidden;
+            overflow-y: auto;
+            min-height: 100vh;
+            text-align: center;
+            color: white;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        .container {
+            max-width: 90%;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #ff6a88, #ff99ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        button {
+            background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .message-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 30px;
+            font-size: 2rem;
+            margin: 20px auto;
+            max-width: 800px;
+            backdrop-filter: blur(8px);
+            color: #fff8f8;
+            line-height: 1.8;
+            display: block;
+            text-align: center;
+            white-space: pre-wrap;
+        }
+
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: url('yagankalp.png') no-repeat center center;
+            background-size: contain;
+            animation: float 12s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            border: 5px dashed white;
+            border-radius: 20px;
+            margin: 40px auto;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        .letter {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 30px;
+            font-size: 2rem;
+            color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            max-width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            button { font-size: 1.2rem; }
+            .message-box { font-size: 1.5rem; }
+            .photo-frame { width: 250px; height: 250px; font-size: 1.4rem; }
+            .letter { font-size: 1.4rem; padding: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sevgimizin 1. Haftası 💞</h1>
+        <button id="startButton">Kalbimi Aç 🎵</button>
+        <div id="messageContainer"></div>
+        <div class="photo-frame" id="photoFrame">Burasını saklıyorum<br>seninle doldurmak için 💞</div>
+        <button id="letterButton" style="display:none;">Sana Özel Mektup ✉️</button>
+        <div class="letter" id="letter">
+            Canım Aşkımm sevgilimmm,
+
+            Biliyorum daha 1 haftalık sevgiliyiz... Ama kalbim öyle derin bir aşkla doldu ki, sanki seni yıllardır tanıyormuşum gibi. Her mesajın, her kelimen bana umut, huzur ve tarifsiz bir mutluluk veriyor. 
+
+            Seninle bir ömür yaşamak istiyorum. Haftaları, ayları, yılları beraber saymak, her sabah sana günaydın demek, her gece sana iyi geceler dilemek istiyorum. Seninle birlikte gülelim, birlikte ağlayalım, birlikte büyüyelim istiyorum.
+
+            Senin kalbinde kendime bir yuva buldum. Sen benim mucizemsin. İyi ki varsın, iyi ki benimlesin. Seni tarifsiz bir aşkla seviyorum. 💖
+
+            Birlikte nice haftalar, aylar, yıllarımız olsun canım Eşimm Kalbimin sahibi... 💫
+        </div>
+    </div>
+
+    <div class="hearts" id="hearts"></div>
+
+    <audio id="music" src="music3.mp3" preload="auto"></audio>
+
+    <script>
+        const button = document.getElementById('startButton');
+        const messageContainer = document.getElementById('messageContainer');
+        const music = document.getElementById('music');
+        const heartsContainer = document.getElementById('hearts');
+        const photoFrame = document.getElementById('photoFrame');
+        const letterButton = document.getElementById('letterButton');
+        const letter = document.getElementById('letter');
+
+        const messages = [
+            "Bu bir hafta içinde öğrendim, bazen kalp hiç görmeden de sever...",
+            "Her mesajında biraz daha yaklaştım sana, her gülüşünde biraz daha kayboldum.",
+            "Kalbim artık seninle atıyor, sanki bir melodiyi paylaşıyoruz birlikte.",
+            "Ayşegül... 💌",
+            "A - Aşkı bana yeniden öğreten isim...",
+            "Y - Yalnızlığıma renk getirdin...",
+            "Ş - Şefkatinle ruhumu sardın...",
+            "E - Ellerini tutamasam da kalbini tuttum...",
+            "G - Gözlerinde kaybolmak için sabırsızım...",
+            "Ü - Üzerimdeki tüm hüzünleri sen sildin...",
+            "L - Lütfen bir ömür benimle olur musun? 💍",
+            "Seninle geçen her an sonsuz, seninle geçen her saniye huzur.",
+            "Belki henüz sarılamadık, ama kalplerimiz çoktan sarıldı bile. 💖",
+            "Birlikte yürüyemediğimiz yolları, birlikte hayal ediyorum.",
+            "Her yazdığın cümle kalbimde yankılanıyor.",
+            "Henüz göz göze bakamadık, ama ruhlarımız zaten birbirini buldu.",
+            "Belki uzaklıktayız ama kalbim her an sana daha da yakınlaşıyor.",
+            "Sen benim mucizemsin, Biriciğimm. 💫",
+            "\nSeninle Yapmak İstediklerim: 💫",
+            "\n1. Seninle sinemaya gitmek 🎬\nBirlikte en tatlı filmi izleyip, ellerimizi sımsıkı tutmak...",
+            "\n2. Seninle sahilde yürümek 🌅\nAyaklarımızı kumlara basıp, kalplerimizi birbirine anlatmak...",
+            "\n3. Seninle bir kafede oturmak ☕\nBirlikte saatlerce konuşup, zamanın nasıl geçtiğini unutmak...",
+            "\n4. Seninle bir sabah kahvaltısı yapmak 🍳\nBeraber gülmek, beraber doymak ve en güzel anılarımızı paylaşmak...",
+            "\n5. Sana bir gün sarılmak 💞\nVe o anda dünyanın en mutlu insanı olmak...",
+            "\n💖 Burası seninle doldurmak için saklı 💖"
+        ];
+
+        let messageIndex = 0;
+
+        button.addEventListener('click', () => {
+            button.style.display = 'none';
+            music.play();
+            createHeartEffect();
+            createStarEffect();
+            showNextMessage();
+        });
+
+        function showNextMessage() {
+            if (messageIndex < messages.length) {
+                const messageBox = document.createElement('div');
+                messageBox.classList.add('message-box');
+                messageContainer.appendChild(messageBox);
+
+                typeWriter(messages[messageIndex], messageBox, () => {
+                    messageIndex++;
+                    if (messageIndex === messages.length) {
+                        photoFrame.style.display = 'flex';
+                        letterButton.style.display = 'inline-block';
+                    } else {
+                        setTimeout(showNextMessage, 500);
+                    }
+                });
+            }
+        }
+
+        function typeWriter(text, element, callback) {
+            let i = 0;
+            const speed = 30;
+            element.textContent = '';
+            const interval = setInterval(() => {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    if (callback) callback();
+                }
+            }, speed);
+        }
+
+        letterButton.addEventListener('click', () => {
+            letter.style.display = 'block';
+            letterButton.style.display = 'none';
+        });
+
+        function createHeartEffect() {
+            for (let i = 0; i < 20; i++) createHeart();
+            setInterval(() => createHeart(), 1000);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (8 + Math.random() * 4) + 's';
+            heartsContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 12000);
+        }
+
+        function createStarEffect() {
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = (1 + Math.random() * 3) + 's';
+                document.body.appendChild(star);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
