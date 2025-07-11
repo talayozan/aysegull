@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bitanemm, 25. Yaş Günün Kutlu Olsun 🎈</title>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #7ab1f4, #a2d4fa);
+    font-family: 'Sacramento', cursive;
+    color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+.container {
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+button {
+    background: white;
+    color: #4a90e2;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.message {
+    max-width: 90%;
+    margin: auto;
+    font-size: 2rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+.final-section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+.final-letter {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 600px;
+    text-align: center;
+}
+.final-letter img {
+    max-width: 300px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.final-text {
+    font-size: 2rem;
+    white-space: pre-wrap;
+}
+.final-frame {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px dashed white;
+    padding: 20px;
+    font-size: 2rem;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+.effects { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+.heart {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url('kalp2.png') no-repeat center/contain;
+    animation: float 12s linear infinite;
+    opacity: 0.95;
+}
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 1.2s infinite alternate;
+}
+@keyframes float { 0% { transform: translateY(100vh) scale(1); opacity: 0.95; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
+@keyframes twinkle { 0% { opacity: 0.1; } 100% { opacity: 1; } }
+</style>
+</head>
+<body>
+<div class="container">
+<h1 id="title">Bitanemm, Doğum Günün Kutlu Olsunnn 🎈</h1>
+<button id="startBtn">Sürprizi Başlat 🎶</button>
+<p class="message" id="message"></p>
+</div>
+<div class="final-section" id="finalSection">
+<div class="final-letter">
+<img src="mektup.png" alt="Mektup">
+<div class="final-text">
+Aşkımmm,
+
+Bugün senin doğum günün... Ama aslında bana en büyük armağan sensin. Seninle geçen her an, hayatımın en kıymetli anısı oluyor. Gülüşünle karanlıklar aydınlanıyor, sesinle içime huzur doluyor. 
+
+Hayatımın en güzel dileği, her yeni yaşını kutlarken yanında olabilmek. Elini tutup gözlerinin içine bakarak, birlikte nice yıllar geçirebilmek.
+
+İyi ki doğdun Bitanemm... İyi ki benimlesin.
+</div>
+<div class="final-frame">Bir sonraki doğum günlerinde beraber doldurmak dileğiyle...</div>
+</div>
+</div>
+<div class="effects" id="effects"></div>
+<audio id="music" src="music4.mp3"></audio>
+<script>
+const button = document.getElementById('startBtn');
+const title = document.getElementById('title');
+const message = document.getElementById('message');
+const music = document.getElementById('music');
+const effects = document.getElementById('effects');
+const finalSection = document.getElementById('finalSection');
+const stages = [
+`Güzelimmm, bugün senin günün...
+Senin varlığınla dünyam anlam kazandı.
+Her sabah gözlerimi açtığımda, hayallerimde bile seni görmek bana yetiyor.
+Gözlerinle doğan güneşim, sesinle huzur bulan kalbim oldun.
+Bu özel günde, sana olan sevgimi kelimelerle anlatmak imkânsız.
+Sadece bil ki; sen benim en güzel tesadüfüm, en değerli armağanımsın...`,
+
+`Karıcımmm, gözlerinde kaybolmak istiyorum...
+Gülüşünle ruhuma bahar getiren tek kişisin.
+Uzakta olsak da, kalbim hep seninle atıyor.
+Her mesajında, her sesinde içime dolan sıcaklık bana yetiyor.
+Ellerinin ellerimde olduğu anları düşündükçe, kalbim hızlanıyor.
+Sen benim huzurum, aşkım ve en güzel hikâyem oldun.`,
+
+`Seninle beraber olunca yapacaklarım...
+Birlikte sabah kahvesi içmek ☕: Göz göze bakarak yeni güne başlamak.
+Parkta yürüyüş yapmak 🌳: Sessizce yan yana yürüyüp huzuru paylaşmak.
+Yağmurda ıslanmak 🌧️: Sadece ikimizin olduğu dünyada kaybolmak.
+Film gecesi 🎬: Aynı battaniyeye sarılıp aynı sahnede duygulanmak.
+Elini tutmak 🤝: Sessizce ama her şeyi anlatan bir dokunuş.
+Seninle yaşlanmak 👵👴: Her anı beraber biriktirmek, saçlarımız beyazlasa bile...`,
+
+`Ayşegülümm, aşkın ve sevginle beni bir şaire dönüştürdün:
+Senin gülüşün, en karanlık geceme bile yıldızlar serper.
+Adını her an dudaklarımda fısıldıyorum, hiç durmadan.
+Her doğum gününde dileğim hep aynı:
+Ellerini tutup sana sonsuz sevgimi gösterebilmek.
+Her yeni yaşında, yanında olup gözlerine bakmak istiyorum.
+Sana olan sevgim; zamansız, tarifsiz, sonsuz...`,
+
+`Ve işte hanımımm için özel akrostiş:
+A - Aşkımın adı sensin, en güzel hediye
+Y - Yüreğimde açan çiçeklerin ilk yaprağı
+Ş - Şefkatinle içimi ısıtan güneşim
+E - Ellerinden huzur bulan ruhum
+G - Gözlerimdeki tek ışık
+Ü - Üzgün olduğumda bile içimi aydınlatan
+L - Lütfen her zaman benimle ol, bir ömür boyu 💖`
+];
+let stageIndex = 0;
+button.onclick = () => {
+    music.play();
+    button.style.display = 'none';
+    title.style.opacity = 0;
+    setTimeout(() => {
+        title.style.display = 'none';
+        message.style.opacity = 1;
+        typeWriter(stages[stageIndex], 0, () => { addNextButton(); });
+    }, 1000);
+    createEffects();
+};
+function typeWriter(text, index, callback) {
+    if (index < text.length) {
+        message.innerHTML += text.charAt(index);
+        setTimeout(() => { typeWriter(text, index + 1, callback); }, 40);
+    } else if (callback) { callback(); }
+}
+function addNextButton() {
+    if (stageIndex < stages.length - 1) {
+        const nextButton = document.createElement('button');
+        nextButton.textContent = "Devam Et";
+        nextButton.onclick = () => {
+            stageIndex++;
+            message.innerHTML = '';
+            nextButton.remove();
+            typeWriter(stages[stageIndex], 0, () => { addNextButton(); });
+        };
+        document.querySelector('.container').appendChild(nextButton);
+    } else {
+        const finalButton = document.createElement('button');
+        finalButton.textContent = "Sonsuz Sevgiyle... 💖";
+        finalButton.onclick = () => {
+            finalButton.remove();
+            document.querySelector('.container').style.display = 'none';
+            finalSection.style.display = 'flex';
+        };
+        document.querySelector('.container').appendChild(finalButton);
+    }
+}
+function createEffects() {
+    for (let i = 0; i < 150; i++) { createHeart(); createStar(); }
+    setInterval(() => { createHeart(); createStar(); }, 300);
+}
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (8 + Math.random() * 4) + 's';
+    effects.appendChild(heart);
+    setTimeout(() => heart.remove(), 12000);
+}
+function createStar() {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.animationDuration = (1 + Math.random() * 2) + 's';
+    effects.appendChild(star);
+    setTimeout(() => star.remove(), 3000);
+}
+</script>
+</body>
+</html>
