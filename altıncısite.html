@@ -1,13 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>1. Ayımız Kutlu Olsun 💝</title>
-
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Poppins:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
 <!-- GSAP + ScrollTrigger -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
 /* ===== Kalp yağmuru + Parıltı ===== */
@@ -117,7 +116,6 @@ if(document.getElementById('overlay')){
 }
 
 </script>
-
 <!-- Anime.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js">
 /* ===== Kalp yağmuru + Parıltı ===== */
@@ -173,7 +171,6 @@ if(document.getElementById('overlay')){
 }
 
 </script>
-
 <!-- Particles.js -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js">
 /* ===== Kalp yağmuru + Parıltı ===== */
@@ -229,7 +226,6 @@ if(document.getElementById('overlay')){
 }
 
 </script>
-
 <!-- VanillaTilt -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js">
 /* ===== Kalp yağmuru + Parıltı ===== */
@@ -285,7 +281,6 @@ if(document.getElementById('overlay')){
 }
 
 </script>
-
 <style>
 :root{
   --pink-1:#ffdde1;
@@ -343,7 +338,7 @@ html,body{
 
 /* Sections */
 section{
-  position:relative; padding:120px 20px; min-height:100vh;
+  position:relative; padding:80px 20px; min-height:100vh;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
 }
 section h1, section h2{
@@ -571,205 +566,188 @@ footer{
   50%{ opacity: 1; transform: scale(1.6); }
 }
 
-</style>
+
+section p.big { margin: 0 auto 12px auto; }
+@media(max-width:768px){ section{ padding:60px 15px; } }</style>
 </head>
 <body>
-
 <!-- FULLSCREEN OVERLAY -->
 <div id="overlay">
-  <h1>1. Ayımız Kutlu Olsun Aşkımmm 💖</h1>
-  <p>26 Haziran’da başlayan hikâyemiz her geçen gün daha da güzelleşiyor.  
+<h1>1. Ayımız Kutlu Olsun Aşkımmm 💖</h1>
+<p>26 Haziran’da başlayan hikâyemiz her geçen gün daha da güzelleşiyor.  
   Bu bir ay; kalbimin en sevdiği ay oldu…</p>
-  <div class="tap-hint">Devam etmek için ekrana dokun / tıkla ✨</div>
+<div class="tap-hint">Devam etmek için ekrana dokun / tıkla ✨</div>
 </div>
-
 <div id="particles-js"></div>
-
 <!-- FX katmanı -->
 <div id="fx-layer">
-  <div id="heartRain"></div>
-  <div id="sparkles"></div>
+<div id="heartRain"></div>
+<div id="sparkles"></div>
 </div>
-
 <!-- (Click burst için dursun) -->
 <div id="cursor"></div>
 <div id="cursor-follower"></div>
-
-<audio id="music" src="music6.mp3" preload="auto"></audio>
-
+<audio id="music" preload="auto" src="music6.mp3"></audio>
 <!-- Artık intro YOK -->
-
 <section id="gallery">
-  <h2>Hayatımın en güzel 3 gününün anları 📸</h2>
-  <p class="big">Her bakışta başka bir an, her anda başka bir mutluluk saklı…</p>
-
-  <div class="slider" id="photoSlider">
-    <div class="caption" id="caption"></div>
-    <div class="controls">
-      <button id="prevBtn">⟵</button>
-      <button id="playPauseBtn">Durdur</button>
-      <button id="nextBtn">⟶</button>
-    </div>
-    <div class="dot-nav" id="dotNav"></div>
-  </div>
+<h2>Hayatımın en güzel 3 gününün anları 📸</h2>
+<p class="big">Her bakışta başka bir an, her anda başka bir mutluluk saklı…</p>
+<div class="slider" id="photoSlider">
+<div class="caption" id="caption"></div>
+<div class="controls">
+<button id="prevBtn">⟵</button>
+<button id="playPauseBtn">Durdur</button>
+<button id="nextBtn">⟶</button>
+</div>
+<div class="dot-nav" id="dotNav"></div>
+</div>
 </section>
-
 <section id="timeline">
-  <h2>1 Ayımızın Duygusal Zaman Çizelgesi 🕰️</h2>
-  <div class="timeline-wrapper" id="timelineWrapper">
-    <div class="timeline-line"></div>
-
-    <div class="timeline-item left">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>İlk Konuşma 💬</h3>
-        <p>Belki bir mesajla başladı ama kalbimdeki yankısı hâlâ sürüyor…</p>
-      </div>
-    </div>
-    <div class="timeline-item right">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>İlk Gülüşünü Görmem 😍</h3>
-        <p>O an içimde bir şeyler yer değiştirdi. Dünya bir anda daha güzel oldu.</p>
-      </div>
-    </div>
-    <div class="timeline-item left">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>İlk Buluşma ✨</h3>
-        <p>Fotoğraflarımıza her baktığımda, o anın büyüsüne yeniden kapılıyorum.</p>
-      </div>
-    </div>
-    <div class="timeline-item right">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>İlk “Seni Çok Seviyorum” 💞</h3>
-        <p>Kelimeler kolaydı, hisler tarifsizdi…</p>
-      </div>
-    </div>
-    <div class="timeline-item left">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>1. Ayımız 🎉</h3>
-        <p>Ve buradayız… daha upuzun bir yolun ilk duraklarında, el ele.</p>
-      </div>
-    </div>
-
-    <div class="timeline-item right">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>Birlikte Kahkahalar 😄</h3>
-        <p>Her kahkahan, içimdeki tüm karanlığı aydınlatıyor.</p>
-      </div>
-    </div>
-    <div class="timeline-item left">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>Sana Baktığım An 💘</h3>
-        <p>Gözlerine baktığımda zaman duruyor, kalbim sadece senin için atıyor.</p>
-      </div>
-    </div>
-    <div class="timeline-item right">
-      <span class="dot"></span>
-      <div class="content" data-tilt data-tilt-max="8">
-        <h3>Beraber Gelecek Hayalleri 🌠</h3>
-        <p>Seninle kurduğum her hayal, gerçek olsun istiyorum.</p>
-      </div>
-    </div>
-  </div>
+<h2>1 Ayımızın Duygusal Zaman Çizelgesi 🕰️</h2>
+<div class="timeline-wrapper" id="timelineWrapper">
+<div class="timeline-line"></div>
+<div class="timeline-item left">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>İlk Konuşma 💬</h3>
+<p>Belki bir mesajla başladı ama kalbimdeki yankısı hâlâ sürüyor…</p>
+</div>
+</div>
+<div class="timeline-item right">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>İlk Gülüşünü Görmem 😍</h3>
+<p>O an içimde bir şeyler yer değiştirdi. Dünya bir anda daha güzel oldu.</p>
+</div>
+</div>
+<div class="timeline-item left">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>İlk Buluşma ✨</h3>
+<p>Fotoğraflarımıza her baktığımda, o anın büyüsüne yeniden kapılıyorum.</p>
+</div>
+</div>
+<div class="timeline-item right">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>İlk “Seni Çok Seviyorum” 💞</h3>
+<p>Kelimeler kolaydı, hisler tarifsizdi…</p>
+</div>
+</div>
+<div class="timeline-item left">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>1. Ayımız 🎉</h3>
+<p>Ve buradayız… daha upuzun bir yolun ilk duraklarında, el ele.</p>
+</div>
+</div>
+<div class="timeline-item right">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>Birlikte Kahkahalar 😄</h3>
+<p>Her kahkahan, içimdeki tüm karanlığı aydınlatıyor.</p>
+</div>
+</div>
+<div class="timeline-item left">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>Sana Baktığım An 💘</h3>
+<p>Gözlerine baktığımda zaman duruyor, kalbim sadece senin için atıyor.</p>
+</div>
+</div>
+<div class="timeline-item right">
+<span class="dot"></span>
+<div class="content" data-tilt="" data-tilt-max="8">
+<h3>Beraber Gelecek Hayalleri 🌠</h3>
+<p>Seninle kurduğum her hayal, gerçek olsun istiyorum.</p>
+</div>
+</div>
+</div>
 </section>
-
 <section id="romantic-text">
-  <h2>Seninle Geçen Her An</h2>
-  <p class="big">
+<h2>Seninle Geçen Her An</h2>
+<p class="big">
     Seninle olduğum her an, dünyayı unuttuğum bir an oluyor. Kalbimin ritmi bile sadece senin gülüşüne uyum sağlıyor.
   </p>
-  <p class="big">
+<p class="big">
     Bir ayda yaşadığımız onca güzel an, binlerce kelimenin anlatamayacağı kadar değerli.  
     Fotoğraflar, mesajlar, sesin… hepsi içimde saklı.
   </p>
-  <p class="big">
+<p class="big">
     Gelecek, seninle kurduğum hayallerle dolu… Elini hiç bırakmadan, her yeni günü birlikte yazmak istiyorum.
   </p>
 </section>
-
 <section id="romantic-message">
-  <h2>Seninle Her An Bir Hazine 💖</h2>
-  <p class="big">
+<h2>Seninle Her An Bir Hazine 💖</h2>
+<p class="big">
     Bu bir ayda, seninle paylaştığım her saniye kalbime kazındı.
     Gece yarısı sohbetlerin, kahkahaların ve hayallerinle her günümü renklendirdin.
     İyi ki varsın, iyi ki yanımdasın...
   </p>
 </section>
-
 <section id="extra-love">
-  <h2>Seninle Her Gün Daha Güzel 🌹</h2>
-  <p class="big">Her geçen gün, sevgimizin biraz daha derinleştiğini hissediyorum. Seninle geçen her dakika,
+<h2>Seninle Her Gün Daha Güzel 🌹</h2>
+<p class="big">Her geçen gün, sevgimizin biraz daha derinleştiğini hissediyorum. Seninle geçen her dakika,
   hayatımın en özel anları arasında yer alıyor.</p>
-  <p class="big">Senin gülüşün, içimde çiçekler açtırıyor. Ne zaman gözlerinin içine baksam,
+<p class="big">Senin gülüşün, içimde çiçekler açtırıyor. Ne zaman gözlerinin içine baksam,
   kalbim yeniden aşka uyanıyor. 💕</p>
-  <p class="big">Seninle kurduğumuz hayaller, birlikte atacağımız adımlar ve yazacağımız yeni anılar için sabırsızlanıyorum.
+<p class="big">Seninle kurduğumuz hayaller, birlikte atacağımız adımlar ve yazacağımız yeni anılar için sabırsızlanıyorum.
   Her şey seninle çok daha anlamlı.</p>
 </section>
-
 <section id="counter">
-  <h2>Kaç gündür birlikteyiz? ⏱️</h2>
-  <p class="big">Sayaç, 26 Haziran’dan bugüne kadar geçen süreyi canlı sayıyor!</p>
-  <div class="counter-box" id="counterBox">
-    <div class="counter-item">
-      <div class="num" id="days">0</div>
-      <div class="label">Gün</div>
-    </div>
-    <div class="counter-item">
-      <div class="num" id="hours">0</div>
-      <div class="label">Saat</div>
-    </div>
-    <div class="counter-item">
-      <div class="num" id="minutes">0</div>
-      <div class="label">Dakika</div>
-    </div>
-    <div class="counter-item">
-      <div class="num" id="seconds">0</div>
-      <div class="label">Saniye</div>
-    </div>
-  </div>
+<h2>Kaç gündür birlikteyiz? ⏱️</h2>
+<p class="big">Sayaç, 26 Haziran’dan bugüne kadar geçen süreyi canlı sayıyor!</p>
+<div class="counter-box" id="counterBox">
+<div class="counter-item">
+<div class="num" id="days">0</div>
+<div class="label">Gün</div>
+</div>
+<div class="counter-item">
+<div class="num" id="hours">0</div>
+<div class="label">Saat</div>
+</div>
+<div class="counter-item">
+<div class="num" id="minutes">0</div>
+<div class="label">Dakika</div>
+</div>
+<div class="counter-item">
+<div class="num" id="seconds">0</div>
+<div class="label">Saniye</div>
+</div>
+</div>
 </section>
-
 <section id="akrostis">
-  <h2>Aşkıma bir diğer Akrostişim 💞</h2>
-  <div id="akrostisLines">
-    <div class="akrostis-line">A - Aşkımın adı sensin…</div>
-    <div class="akrostis-line">Y - Yüreğimdeki en güzel melodi…</div>
-    <div class="akrostis-line">Ş - Şefkatinle beni sarıp sarmalayan…</div>
-    <div class="akrostis-line">E - Ellerimde sonsuzluğu hissettiren…</div>
-    <div class="akrostis-line">G - Gözlerimde ışık, ruhumda huzur olan…</div>
-    <div class="akrostis-line">Ü - Üzerime her gün sevgi doğuran…</div>
-    <div class="akrostis-line">L - Lütfen sonsuza kadar yanımda kal… 💖</div>
-  </div>
+<h2>Aşkıma bir diğer Akrostişim 💞</h2>
+<div id="akrostisLines">
+<div class="akrostis-line">A - Aşkımın adı sensin…</div>
+<div class="akrostis-line">Y - Yüreğimdeki en güzel melodi…</div>
+<div class="akrostis-line">Ş - Şefkatinle beni sarıp sarmalayan…</div>
+<div class="akrostis-line">E - Ellerimde sonsuzluğu hissettiren…</div>
+<div class="akrostis-line">G - Gözlerimde ışık, ruhumda huzur olan…</div>
+<div class="akrostis-line">Ü - Üzerime her gün sevgi doğuran…</div>
+<div class="akrostis-line">L - Lütfen sonsuza kadar yanımda kal… 💖</div>
+</div>
 </section>
-
 <section id="letter">
-  <h2>Kalbimin Sana Yazdığı Mektup 💌</h2>
-  <div class="envelope-wrapper">
-    <div class="envelope">
-      <div class="env-back"></div>
-      <div class="env-front" id="envFront"></div>
-      <div class="env-letter" id="envLetter">
-        <h3>Bitanecik eşimm,</h3>
-        <p>26 Haziran’da başlayan bu hikâyemiz, 26 Temmuz’da ilk ayını kutladı… ama kalbimde sanki çok daha uzun zamandır beraberiz.</p>
-        <p>Gülüşünle açılan sabahlarım, sesinle huzura eren gecelerim oldu. Kalbimin her atışında sen varsın; her hayalimde elimi tutan, gözlerimin içine bakan sen varsın.</p>
-        <p>Bu ay, sadece bir başlangıç. Bundan sonrası; birlikte büyüyen hayaller, çoğalan gülüşler, bitmeyen sohbetler ve sonsuz bir sevgi olsun istiyorum.</p>
-        <p>İyi ki varsın. İyi ki benimlesin. Seni çok seviyorum… 💖</p>
-      </div>
-    </div>
-  </div>
-  <button class="open-letter-btn" id="openLetterBtn">Mektubu Aç ✨</button>
+<h2>Kalbimin Sana Yazdığı Mektup 💌</h2>
+<div class="envelope-wrapper">
+<div class="envelope">
+<div class="env-back"></div>
+<div class="env-front" id="envFront"></div>
+<div class="env-letter" id="envLetter">
+<h3>Bitanecik eşimm,</h3>
+<p>26 Haziran’da başlayan bu hikâyemiz, 26 Temmuz’da ilk ayını kutladı… ama kalbimde sanki çok daha uzun zamandır beraberiz.</p>
+<p>Gülüşünle açılan sabahlarım, sesinle huzura eren gecelerim oldu. Kalbimin her atışında sen varsın; her hayalimde elimi tutan, gözlerimin içine bakan sen varsın.</p>
+<p>Bu ay, sadece bir başlangıç. Bundan sonrası; birlikte büyüyen hayaller, çoğalan gülüşler, bitmeyen sohbetler ve sonsuz bir sevgi olsun istiyorum.</p>
+<p>İyi ki varsın. İyi ki benimlesin. Seni çok seviyorum… 💖</p>
+</div>
+</div>
+</div>
+<button class="open-letter-btn" id="openLetterBtn">Mektubu Aç ✨</button>
 </section>
-
 <footer>
   Hazırlayan: Ozan – Ayşegül’e sonsuz sevgiyle 💫
 </footer>
-
 <script>
 /* =========================
    FOTOĞRAFLAR
@@ -1152,6 +1130,5 @@ if(document.getElementById('overlay')){
 }
 
 </script>
-
 </body>
 </html>
