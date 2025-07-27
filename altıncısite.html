@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1. Ayımız Kutlu Olsun 💝</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+/* ===== Kalp yağmuru + Parıltı ===== */
+function startHeartRain(){
+  for(let i=0;i<25;i++) spawnHeart();
+  setInterval(spawnHeart, 280);
+}
+function spawnHeart(){
+  const cont = document.getElementById('heartRain');
+  const el = document.createElement('div');
+  el.className = 'heart';
+  const left = Math.random() * 100;
+  const size = 18 + Math.random()*18;
+  const duration = 6 + Math.random()*6;
+  el.style.left = left + 'vw';
+  el.style.width = el.style.height = size + 'px';
+  el.style.animationDuration = duration + 's';
+  cont.appendChild(el);
+  setTimeout(()=> el.remove(), duration * 1000 + 500);
+}
+function startSparkles(){
+  const cont = document.getElementById('sparkles');
+  const COUNT = 120;
+  for(let i=0;i<COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    resetSpark(s, true);
+    cont.appendChild(s);
+    (function loop(el){
+      const t = 2000 + Math.random()*2000;
+      setTimeout(()=>{
+        resetSpark(el);
+        loop(el);
+      }, t);
+    })(s);
+  }
+}
+function resetSpark(el, first=false){
+  const x = Math.random()*100;
+  const y = Math.random()*100;
+  const delay = first ? (Math.random()*2000) : 0;
+  el.style.left = x + 'vw';
+  el.style.top = y + 'vh';
+  el.style.animationDelay = (delay/1000) + 's';
+}
+
+// Overlay click içinde efektleri başlat
+if(document.getElementById('overlay')){
+  document.getElementById('overlay').addEventListener('click', () => {
+    startHeartRain();
+    startSparkles();
+  });
+}
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js">
+/* ===== Kalp yağmuru + Parıltı ===== */
+function startHeartRain(){
+  for(let i=0;i<25;i++) spawnHeart();
+  setInterval(spawnHeart, 280);
+}
+function spawnHeart(){
+  const cont = document.getElementById('heartRain');
+  const el = document.createElement('div');
+  el.className = 'heart';
+  const left = Math.random() * 100;
+  const size = 18 + Math.random()*18;
+  const duration = 6 + Math.random()*6;
+  el.style.left = left + 'vw';
+  el.style.width = el.style.height = size + 'px';
+  el.style.animationDuration = duration + 's';
+  cont.appendChild(el);
+  setTimeout(()=> el.remove(), duration * 1000 + 500);
+}
+function startSparkles(){
+  const cont = document.getElementById('sparkles');
+  const COUNT = 120;
+  for(let i=0;i<COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    resetSpark(s, true);
+    cont.appendChild(s);
+    (function loop(el){
+      const t = 2000 + Math.random()*2000;
+      setTimeout(()=>{
+        resetSpark(el);
+        loop(el);
+      }, t);
+    })(s);
+  }
+}
+function resetSpark(el, first=false){
+  const x = Math.random()*100;
+  const y = Math.random()*100;
+  const delay = first ? (Math.random()*2000) : 0;
+  el.style.left = x + 'vw';
+  el.style.top = y + 'vh';
+  el.style.animationDelay = (delay/1000) + 's';
+}
+
+// Overlay click içinde efektleri başlat
+if(document.getElementById('overlay')){
+  document.getElementById('overlay').addEventListener('click', () => {
+    startHeartRain();
+    startSparkles();
+  });
+}
+
+</script>
+
+<!-- Anime.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js">
+/* ===== Kalp yağmuru + Parıltı ===== */
+function startHeartRain(){
+  for(let i=0;i<25;i++) spawnHeart();
+  setInterval(spawnHeart, 280);
+}
+function spawnHeart(){
+  const cont = document.getElementById('heartRain');
+  const el = document.createElement('div');
+  el.className = 'heart';
+  const left = Math.random() * 100;
+  const size = 18 + Math.random()*18;
+  const duration = 6 + Math.random()*6;
+  el.style.left = left + 'vw';
+  el.style.width = el.style.height = size + 'px';
+  el.style.animationDuration = duration + 's';
+  cont.appendChild(el);
+  setTimeout(()=> el.remove(), duration * 1000 + 500);
+}
+function startSparkles(){
+  const cont = document.getElementById('sparkles');
+  const COUNT = 120;
+  for(let i=0;i<COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    resetSpark(s, true);
+    cont.appendChild(s);
+    (function loop(el){
+      const t = 2000 + Math.random()*2000;
+      setTimeout(()=>{
+        resetSpark(el);
+        loop(el);
+      }, t);
+    })(s);
+  }
+}
+function resetSpark(el, first=false){
+  const x = Math.random()*100;
+  const y = Math.random()*100;
+  const delay = first ? (Math.random()*2000) : 0;
+  el.style.left = x + 'vw';
+  el.style.top = y + 'vh';
+  el.style.animationDelay = (delay/1000) + 's';
+}
+
+// Overlay click içinde efektleri başlat
+if(document.getElementById('overlay')){
+  document.getElementById('overlay').addEventListener('click', () => {
+    startHeartRain();
+    startSparkles();
+  });
+}
+
+</script>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js">
+/* ===== Kalp yağmuru + Parıltı ===== */
+function startHeartRain(){
+  for(let i=0;i<25;i++) spawnHeart();
+  setInterval(spawnHeart, 280);
+}
+function spawnHeart(){
+  const cont = document.getElementById('heartRain');
+  const el = document.createElement('div');
+  el.className = 'heart';
+  const left = Math.random() * 100;
+  const size = 18 + Math.random()*18;
+  const duration = 6 + Math.random()*6;
+  el.style.left = left + 'vw';
+  el.style.width = el.style.height = size + 'px';
+  el.style.animationDuration = duration + 's';
+  cont.appendChild(el);
+  setTimeout(()=> el.remove(), duration * 1000 + 500);
+}
+function startSparkles(){
+  const cont = document.getElementById('sparkles');
+  const COUNT = 120;
+  for(let i=0;i<COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    resetSpark(s, true);
+    cont.appendChild(s);
+    (function loop(el){
+      const t = 2000 + Math.random()*2000;
+      setTimeout(()=>{
+        resetSpark(el);
+        loop(el);
+      }, t);
+    })(s);
+  }
+}
+function resetSpark(el, first=false){
+  const x = Math.random()*100;
+  const y = Math.random()*100;
+  const delay = first ? (Math.random()*2000) : 0;
+  el.style.left = x + 'vw';
+  el.style.top = y + 'vh';
+  el.style.animationDelay = (delay/1000) + 's';
+}
+
+// Overlay click içinde efektleri başlat
+if(document.getElementById('overlay')){
+  document.getElementById('overlay').addEventListener('click', () => {
+    startHeartRain();
+    startSparkles();
+  });
+}
+
+</script>
+
+<!-- VanillaTilt -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js">
+/* ===== Kalp yağmuru + Parıltı ===== */
+function startHeartRain(){
+  for(let i=0;i<25;i++) spawnHeart();
+  setInterval(spawnHeart, 280);
+}
+function spawnHeart(){
+  const cont = document.getElementById('heartRain');
+  const el = document.createElement('div');
+  el.className = 'heart';
+  const left = Math.random() * 100;
+  const size = 18 + Math.random()*18;
+  const duration = 6 + Math.random()*6;
+  el.style.left = left + 'vw';
+  el.style.width = el.style.height = size + 'px';
+  el.style.animationDuration = duration + 's';
+  cont.appendChild(el);
+  setTimeout(()=> el.remove(), duration * 1000 + 500);
+}
+function startSparkles(){
+  const cont = document.getElementById('sparkles');
+  const COUNT = 120;
+  for(let i=0;i<COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    resetSpark(s, true);
+    cont.appendChild(s);
+    (function loop(el){
+      const t = 2000 + Math.random()*2000;
+      setTimeout(()=>{
+        resetSpark(el);
+        loop(el);
+      }, t);
+    })(s);
+  }
+}
+function resetSpark(el, first=false){
+  const x = Math.random()*100;
+  const y = Math.random()*100;
+  const delay = first ? (Math.random()*2000) : 0;
+  el.style.left = x + 'vw';
+  el.style.top = y + 'vh';
+  el.style.animationDelay = (delay/1000) + 's';
+}
+
+// Overlay click içinde efektleri başlat
+if(document.getElementById('overlay')){
+  document.getElementById('overlay').addEventListener('click', () => {
+    startHeartRain();
+    startSparkles();
+  });
+}
+
+</script>
+
+<style>
+:root{
+  --pink-1:#ffdde1;
+  --pink-2:#ee9ca7;
+  --text:#ffffff;
+  --accent:#ff90c2;
+  --shadow:rgba(0,0,0,0.3);
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0; padding:0; width:100%; height:100%;
+  color:var(--text);
+  font-family:'Poppins', sans-serif;
+  overflow-x:hidden;
+  background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+  cursor: url('yagankalp.png') 16 16, auto;
+}
+
+/* ===== Overlay ===== */
+#overlay{
+  position:fixed; inset:0; z-index:99999;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  text-align:center; padding:24px; color:#fff;
+  cursor:pointer;
+  transition: opacity .6s ease;
+}
+#overlay.hide{
+  opacity:0; pointer-events:none; visibility:hidden;
+}
+#overlay h1{
+  font-family:'Great Vibes', cursive;
+  font-size:4rem; margin:0 0 16px 0; text-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+#overlay p{
+  font-size:1.2rem; max-width:700px; line-height:1.7rem; opacity:.9;
+}
+#overlay .tap-hint{
+  margin-top:28px; font-size:1rem; opacity:.8;
+}
+@media(max-width:768px){
+  #overlay h1{ font-size:3rem; }
+  #overlay p{ font-size:1.05rem; }
+}
+
+/* Particles */
+#particles-js{
+  position:fixed; top:0; left:0; width:100%; height:100%; z-index:-2;
+}
+
+/* Eski custom cursorları gizli */
+#cursor, #cursor-follower{ display:none !important; }
+
+/* Sections */
+section{
+  position:relative; padding:120px 20px; min-height:100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+section h1, section h2{
+  font-family:'Great Vibes', cursive; font-weight:400; text-shadow:0 2px 10px var(--shadow);
+}
+section h1{ font-size:4rem; margin:0 0 20px 0; }
+section h2{ font-size:3rem; margin:0 0 40px 0; }
+p.big{
+  font-size:1.3rem; max-width:900px; margin:0 auto 20px auto; text-align:center; line-height:1.9rem;
+}
+
+/* Gallery */
+#gallery{
+  background:rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+}
+.slider{
+  position:relative;
+  width:90%;
+  max-width:1100px;
+  height: clamp(360px, 70vh, 820px);
+  margin:40px auto 0 auto;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.slider img{
+  background-color:#000;
+  object-position:center;
+  position:absolute; inset:0;
+  margin:auto;
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit: contain;
+  opacity:0;
+}
+.slider img.landscape{
+  object-fit:cover;
+  background:#000;
+}
+.slider .caption{
+  position:absolute; left:50%; bottom:65px; transform:translateX(-50%);
+  background:rgba(0,0,0,.35); padding:8px 16px; border-radius:10px; font-size:1rem; z-index:4;
+  max-width:80%; text-align:center;
+}
+.slider .controls{
+  position:absolute; bottom:15px; right:15px; display:flex; gap:10px; z-index:3;
+}
+.slider .controls button{
+  background:rgba(0,0,0,.4); color:#fff; border:none; border-radius:8px; padding:8px 12px; cursor:pointer;
+}
+.slider .dot-nav{
+  position:absolute; bottom:15px; left:50%; transform:translateX(-50%);
+  display:flex; gap:8px; z-index:3;
+}
+.slider .dot{
+  width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.4); transition:all .2s;
+}
+.slider .dot.active{
+  background:#fff; transform:scale(1.2);
+}
+
+/* Timeline */
+#timeline{
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(4px);
+}
+.timeline-wrapper{
+  position:relative; width:90%; max-width:900px; margin:0 auto;
+}
+.timeline-line{
+  position:absolute; left:50%; top:0; transform:translateX(-50%);
+  width:4px; height:100%; background:rgba(255,255,255,0.2);
+}
+.timeline-item{
+  position:relative; width:100%; margin:60px 0; opacity:0;
+}
+.timeline-item .content{
+  position:relative; width:calc(50% - 40px); padding:24px 26px;
+  background:rgba(255,255,255,0.08); border-radius:22px; box-shadow: 0 10px 25px rgba(0,0,0,.18);
+}
+.timeline-item.left .content{ margin-right:auto; }
+.timeline-item.right .content{ margin-left:auto; }
+.timeline-item .dot{
+  position:absolute; width:16px; height:16px; border-radius:50%; background:#fff; top: 24px; left:50%; transform: translate(-50%, -50%);
+  box-shadow:0 0 0 6px rgba(255,255,255,.12);
+}
+.timeline-item h3{
+  margin:0 0 12px 0; font-size:2.2rem; font-family:'Great Vibes', cursive;
+  display:flex; align-items:center; gap:.35rem;
+}
+.timeline-item p{
+  margin:0; font-size: 1.15rem; line-height:2rem; color:#fefefe; opacity:.95;
+}
+
+/* Counter */
+#counter{ background:rgba(255,255,255,0.03); }
+.counter-box{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:30px;
+}
+.counter-item{
+  background:rgba(255,255,255,0.08); border-radius:18px; padding:20px 26px; min-width:140px; box-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+.counter-item .num{ font-size:2.2rem; font-weight:800; }
+.counter-item .label{ opacity:.8; font-size:.9rem; }
+
+/* Letter */
+#letter{ background:rgba(255,255,255,0.05); }
+.envelope-wrapper{
+  position:relative; width:90%; max-width:700px; margin:0 auto; display:flex; justify-content:center; align-items:center;
+}
+.envelope{ position:relative; width:100%; height:420px; perspective:1200px; }
+.env-back, .env-front, .env-letter{
+  position:absolute; width:100%; height:100%; border-radius:20px;
+}
+.env-back{
+  background:linear-gradient(135deg, #ffb3c6, #ff9bcb);
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+.env-front{
+  background:linear-gradient(135deg, #ff9bcb, #ffb3c6);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  transform-origin: top center; transform: rotateX(0deg);
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+.env-letter{
+  background:rgba(255,255,255,0.95); color:#333; font-family:'Poppins', sans-serif;
+  transform: translateY(40px) scale(0.98);
+  border-radius:12px; padding:28px 24px; overflow:auto; opacity:0;
+}
+.env-letter h3{
+  margin:0 0 12px 0; font-family:'Great Vibes', cursive; font-size:2.3rem; color:#ee9ca7;
+}
+.env-letter p{ margin: 0 0 16px 0; font-size:1.05rem; line-height:1.8rem; }
+.open-letter-btn{
+  margin-top:30px; padding:16px 36px; border:none; border-radius:999px; background:#fff; color:#ee9ca7;
+  font-size:1.2rem; cursor:pointer; box-shadow:0 8px 20px rgba(0,0,0,.2);
+}
+
+/* Akrostiş */
+#akrostis{
+  background: rgba(255,255,255,0.02);
+}
+.akrostis-line{
+  font-family:'Great Vibes', cursive;
+  font-size:2.8rem; margin:8px 0; opacity:0;
+}
+
+/* Romantik blok */
+#romantic-text{
+  background: rgba(255,255,255,0.035);
+  backdrop-filter: blur(4px);
+  padding: 80px 20px 120px;
+}
+#romantic-text p.big{
+  max-width: 1000px;
+}
+
+/* Footer */
+footer{
+  text-align:center; padding:80px 20px 60px; font-size:.95rem; color:#f2f2f2; opacity:.8;
+}
+
+/* Responsive */
+@media(max-width:1024px){
+  .timeline-item h3{ font-size:2rem; }
+  .timeline-item p{ font-size: 1.15rem; line-height:1.9rem; }
+}
+@media(max-width:768px){
+  section h1{ font-size:3rem; }
+  section h2{ font-size:2.5rem; }
+  p.big{ font-size:1.1rem; line-height:1.7rem; }
+  .timeline-item .content{ width:calc(100% - 40px); }
+  .timeline-item h3{ font-size:1.9rem; }
+  .timeline-item p{ font-size: 1.15rem; line-height:1.7rem; }
+  .slider{ height:60vh; }
+}
+@media(max-width:480px){
+  section h1{ font-size:2.4rem; }
+  section h2{ font-size:2.1rem; }
+  .slider{ height:55vh; }
+}
+
+/* FX Layer */
+#fx-layer{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+#heartRain, #sparkles{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+/* Kalpler */
+.heart{
+  position: absolute;
+  width: 32px; /* Boyutu artırdım */
+  height: 32px;
+  background: url('kalp2.png') center/contain no-repeat;
+  opacity: 1; /* Görünürlüğü maksimuma çektim */
+  filter: drop-shadow(0 0 6px rgba(255, 100, 150, 0.8)); /* Hafif parıltı ekledim */
+  animation: heartFall linear forwards;
+}
+@keyframes heartFall{
+  0%{ transform: translateY(-10vh) scale(.9) rotate(0deg); opacity: 1; }
+  100%{ transform: translateY(110vh) scale(1.3) rotate(360deg); opacity: 0; }
+}
+/* Parıltılar */
+.spark{
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255,255,255,.9);
+  opacity: 0;
+  animation: sparkBlink 2.2s ease-in-out infinite;
+}
+@keyframes sparkBlink{
+  0%,100%{ opacity: .15; transform: scale(1); }
+  50%{ opacity: 1; transform: scale(1.6); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- FULLSCREEN OVERLAY -->
+<div id="overlay">
+  <h1>1. Ayımız Kutlu Olsun Aşkımmm 💖</h1>
+  <p>26 Haziran’da başlayan hikâyemiz her geçen gün daha da güzelleşiyor.  
+  Bu bir ay; kalbimin en sevdiği ay oldu…</p>
+  <div class="tap-hint">Devam etmek için ekrana dokun / tıkla ✨</div>
+</div>
+
+<div id="particles-js"></div>
+
+<!-- FX katmanı -->
+<div id="fx-layer">
+  <div id="heartRain"></div>
+  <div id="sparkles"></div>
+</div>
+
+<!-- (Click burst için dursun) -->
+<div id="cursor"></div>
+<div id="cursor-follower"></div>
+
+<audio id="music" src="music6.mp3" preload="auto"></audio>
+
+<!-- Artık intro YOK -->
+
+<section id="gallery">
+  <h2>Hayatımın en güzel 3 gününün anları 📸</h2>
+  <p class="big">Her bakışta başka bir an, her anda başka bir mutluluk saklı…</p>
+
+  <div class="slider" id="photoSlider">
+    <div class="caption" id="caption"></div>
+    <div class="controls">
+      <button id="prevBtn">⟵</button>
+      <button id="playPauseBtn">Durdur</button>
+      <button id="nextBtn">⟶</button>
+    </div>
+    <div class="dot-nav" id="dotNav"></div>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>1 Ayımızın Duygusal Zaman Çizelgesi 🕰️</h2>
+  <div class="timeline-wrapper" id="timelineWrapper">
+    <div class="timeline-line"></div>
+
+    <div class="timeline-item left">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>İlk Konuşma 💬</h3>
+        <p>Belki bir mesajla başladı ama kalbimdeki yankısı hâlâ sürüyor…</p>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>İlk Gülüşünü Görmem 😍</h3>
+        <p>O an içimde bir şeyler yer değiştirdi. Dünya bir anda daha güzel oldu.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>İlk Buluşma ✨</h3>
+        <p>Fotoğraflarımıza her baktığımda, o anın büyüsüne yeniden kapılıyorum.</p>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>İlk “Seni Çok Seviyorum” 💞</h3>
+        <p>Kelimeler kolaydı, hisler tarifsizdi…</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>1. Ayımız 🎉</h3>
+        <p>Ve buradayız… daha upuzun bir yolun ilk duraklarında, el ele.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item right">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>Birlikte Kahkahalar 😄</h3>
+        <p>Her kahkahan, içimdeki tüm karanlığı aydınlatıyor.</p>
+      </div>
+    </div>
+    <div class="timeline-item left">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>Sana Baktığım An 💘</h3>
+        <p>Gözlerine baktığımda zaman duruyor, kalbim sadece senin için atıyor.</p>
+      </div>
+    </div>
+    <div class="timeline-item right">
+      <span class="dot"></span>
+      <div class="content" data-tilt data-tilt-max="8">
+        <h3>Beraber Gelecek Hayalleri 🌠</h3>
+        <p>Seninle kurduğum her hayal, gerçek olsun istiyorum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="romantic-text">
+  <h2>Seninle Geçen Her An</h2>
+  <p class="big">
+    Seninle olduğum her an, dünyayı unuttuğum bir an oluyor. Kalbimin ritmi bile sadece senin gülüşüne uyum sağlıyor.
+  </p>
+  <p class="big">
+    Bir ayda yaşadığımız onca güzel an, binlerce kelimenin anlatamayacağı kadar değerli.  
+    Fotoğraflar, mesajlar, sesin… hepsi içimde saklı.
+  </p>
+  <p class="big">
+    Gelecek, seninle kurduğum hayallerle dolu… Elini hiç bırakmadan, her yeni günü birlikte yazmak istiyorum.
+  </p>
+</section>
+
+<section id="romantic-message">
+  <h2>Seninle Her An Bir Hazine 💖</h2>
+  <p class="big">
+    Bu bir ayda, seninle paylaştığım her saniye kalbime kazındı.
+    Gece yarısı sohbetlerin, kahkahaların ve hayallerinle her günümü renklendirdin.
+    İyi ki varsın, iyi ki yanımdasın...
+  </p>
+</section>
+
+<section id="extra-love">
+  <h2>Seninle Her Gün Daha Güzel 🌹</h2>
+  <p class="big">Her geçen gün, sevgimizin biraz daha derinleştiğini hissediyorum. Seninle geçen her dakika,
+  hayatımın en özel anları arasında yer alıyor.</p>
+  <p class="big">Senin gülüşün, içimde çiçekler açtırıyor. Ne zaman gözlerinin içine baksam,
+  kalbim yeniden aşka uyanıyor. 💕</p>
+  <p class="big">Seninle kurduğumuz hayaller, birlikte atacağımız adımlar ve yazacağımız yeni anılar için sabırsızlanıyorum.
+  Her şey seninle çok daha anlamlı.</p>
+</section>
+
+<section id="counter">
+  <h2>Kaç gündür birlikteyiz? ⏱️</h2>
+  <p class="big">Sayaç, 26 Haziran’dan bugüne kadar geçen süreyi canlı sayıyor!</p>
+  <div class="counter-box" id="counterBox">
+    <div class="counter-item">
+      <div class="num" id="days">0</div>
+      <div class="label">Gün</div>
+    </div>
+    <div class="counter-item">
+      <div class="num" id="hours">0</div>
+      <div class="label">Saat</div>
+    </div>
+    <div class="counter-item">
+      <div class="num" id="minutes">0</div>
+      <div class="label">Dakika</div>
+    </div>
+    <div class="counter-item">
+      <div class="num" id="seconds">0</div>
+      <div class="label">Saniye</div>
+    </div>
+  </div>
+</section>
+
+<section id="akrostis">
+  <h2>Aşkıma bir diğer Akrostişim 💞</h2>
+  <div id="akrostisLines">
+    <div class="akrostis-line">A - Aşkımın adı sensin…</div>
+    <div class="akrostis-line">Y - Yüreğimdeki en güzel melodi…</div>
+    <div class="akrostis-line">Ş - Şefkatinle beni sarıp sarmalayan…</div>
+    <div class="akrostis-line">E - Ellerimde sonsuzluğu hissettiren…</div>
+    <div class="akrostis-line">G - Gözlerimde ışık, ruhumda huzur olan…</div>
+    <div class="akrostis-line">Ü - Üzerime her gün sevgi doğuran…</div>
+    <div class="akrostis-line">L - Lütfen sonsuza kadar yanımda kal… 💖</div>
+  </div>
+</section>
+
+<section id="letter">
+  <h2>Kalbimin Sana Yazdığı Mektup 💌</h2>
+  <div class="envelope-wrapper">
+    <div class="envelope">
+      <div class="env-back"></div>
+      <div class="env-front" id="envFront"></div>
+      <div class="env-letter" id="envLetter">
+        <h3>Bitanecik eşimm,</h3>
+        <p>26 Haziran’da başlayan bu hikâyemiz, 26 Temmuz’da ilk ayını kutladı… ama kalbimde sanki çok daha uzun zamandır beraberiz.</p>
+        <p>Gülüşünle açılan sabahlarım, sesinle huzura eren gecelerim oldu. Kalbimin her atışında sen varsın; her hayalimde elimi tutan, gözlerimin içine bakan sen varsın.</p>
+        <p>Bu ay, sadece bir başlangıç. Bundan sonrası; birlikte büyüyen hayaller, çoğalan gülüşler, bitmeyen sohbetler ve sonsuz bir sevgi olsun istiyorum.</p>
+        <p>İyi ki varsın. İyi ki benimlesin. Seni çok seviyorum… 💖</p>
+      </div>
+    </div>
+  </div>
+  <button class="open-letter-btn" id="openLetterBtn">Mektubu Aç ✨</button>
+</section>
+
+<footer>
+  Hazırlayan: Ozan – Ayşegül’e sonsuz sevgiyle 💫
+</footer>
+
+<script>
+/* =========================
+   FOTOĞRAFLAR
+========================= */
+const photoList = [
+  "biz/biz.jpg","biz/biz1.jpg","biz/biz2.jpg","biz/biz3.jpg","biz/biz4.jpg","biz/biz5.jpg","biz/biz6.jpg","biz/biz7.jpg",
+  "biz/biz8.jpg","biz/biz9.jpg","biz/biz10.jpg","biz/biz11.jpg","biz/biz12.jpg","biz/biz13.jpg","biz/biz14.jpg","biz/biz15.jpg",
+  "biz/biz16.jpg","biz/biz17.jpg","biz/biz18.jpg","biz/biz19.jpg","biz/biz20.jpg","biz/biz21.jpg","biz/biz22.jpg","biz/biz23.jpg",
+  "biz/biz24.jpg","biz/biz25.jpg","biz/biz26.jpg","biz/biz27.jpg","biz/biz28.jpg","biz/biz29.jpg","biz/biz30.jpg","biz/biz31.jpg",
+  "biz/biz32.jpg","biz/biz33.jpg"
+];
+
+const captions = {
+  "biz/biz.jpg": "İlk heyecan, ilk mutluluk…",
+  "biz/biz1.jpg": "Seninle her şey daha güzel...",
+  "biz/biz2.jpg": "Bir ay değil, bir ömür isterim...",
+  "biz/biz3.jpg": "Gülüşün, kalbimin melodisi...",
+  "biz/biz4.jpg": "Her anımız bir şiir gibi...",
+  "biz/biz5.jpg": "Sevgin en güzel hediye...",
+  "biz/biz6.jpg": "İyi ki sen, iyi ki biz...",
+  "biz/biz7.jpg": "Gözlerinde kaybolmak istiyorum...",
+  "biz/biz8.jpg": "Bu fotoğraf anılarımızın şahidi...",
+  "biz/biz9.jpg": "Sonsuza kadar bu gülüşü hatırlamak istiyorum...",
+  "biz/biz10.jpg": "Sevginle dolu her kare...",
+  "biz/biz11.jpg": "Kalbimin tek adresi sensin...",
+  "biz/biz12.jpg": "Bu bir ayda ömrümü güzelleştirdin...",
+  "biz/biz13.jpg": "Sen yanımdayken dünya cennet...",
+  "biz/biz14.jpg": "Seninle her an özel...",
+  "biz/biz15.jpg": "Birlikte nice anılara...",
+  "biz/biz16.jpg": "Sen benim mucizemsin...",
+  "biz/biz17.jpg": "İlk günkü heyecan her karede...",
+  "biz/biz18.jpg": "Sonsuz sevgiyle dolu bir ay...",
+  "biz/biz19.jpg": "Gözlerinle başlayan bir hikaye...",
+  "biz/biz20.jpg": "Kalbim seninle atıyor..."
+};
+
+function shuffle(array){
+  for(let i = array.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+/* =========================
+   PARTICLES
+========================= */
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 120, "density": { "enable": true, "value_area": 1200 } },
+    "color": { "value": ["#ffffff","#ffe4ec","#ffd1dc","#ffb3c6"] },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.6, "random": true },
+    "size": { "value": 3, "random": true },
+    "line_linked": { "enable": true, "distance": 130, "color": "#ffffff", "opacity": 0.1, "width": 1 },
+    "move": { "enable": true, "speed": 1.6, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true },
+    "modes": {
+      "bubble": { "distance": 120, "size": 6, "duration": 2, "opacity": 0.8, "speed": 3 },
+      "repulse": { "distance": 200, "duration": 0.4 }
+    }
+  },
+  "retina_detect": true
+});
+
+/* =========================
+   SCROLL COLOR TRANSITION
+========================= */
+gsap.utils.toArray("section").forEach((sec, i)=>{
+  const colors = [
+    ["#ffdde1","#ee9ca7"],
+    ["#ffd1dc","#fcbad3"],
+    ["#ffdde1","#ffb3c6"],
+    ["#ffe4ec","#ff90c2"],
+    ["#ffdde1","#ee9ca7"],
+    ["#ffd1dc","#fcbad3"],
+  ];
+  const c = colors[i % colors.length];
+
+  ScrollTrigger.create({
+    trigger: sec,
+    start: "top center",
+    onEnter: ()=> gsap.to("body", { background: `linear-gradient(135deg, ${c[0]}, ${c[1]})`, duration: 1.2 }),
+    onEnterBack: ()=> gsap.to("body", { background: `linear-gradient(135deg, ${c[0]}, ${c[1]})`, duration: 1.2 })
+  });
+});
+
+/* =========================
+   OVERLAY CLICK
+========================= */
+const music = document.getElementById('music');
+const overlay = document.getElementById('overlay');
+
+overlay.addEventListener('click', () => {
+  music.volume = 0.7;
+  music.play().catch(()=>{});
+  overlay.classList.add('hide');
+  // ister direkt ilk bölümü yukarıda kalsın, istersen galeriye inelim:
+  document.querySelector("#gallery").scrollIntoView({ behavior:"smooth" });
+});
+
+/* =========================
+   GALLERY SLIDER
+========================= */
+const slider = document.getElementById('photoSlider');
+const captionEl = document.getElementById('caption');
+const dotNav = document.getElementById('dotNav');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const playPauseBtn = document.getElementById('playPauseBtn');
+
+let shuffled = shuffle(photoList.slice());
+let index = 0;
+let autoPlay = true;
+let autoTimer = null;
+let imgs = [];
+
+function buildSlider(){
+  shuffled.forEach((src,i)=>{
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.opacity = 0;
+
+    img.addEventListener('load',()=>{
+      if(img.naturalWidth > img.naturalHeight){
+        img.classList.add('landscape');
+      } else {
+        img.classList.remove('landscape');
+      }
+    });
+
+    slider.appendChild(img);
+    imgs.push(img);
+
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    if(i===0) dot.classList.add('active');
+    dot.addEventListener('click', ()=>goTo(i, true));
+    dotNav.appendChild(dot);
+  });
+
+  gsap.set(imgs[0], {autoAlpha:1});
+  setCaption(shuffled[0]);
+}
+buildSlider();
+
+function setCaption(path){
+  captionEl.textContent = captions[path] || "";
+  captionEl.style.display = captionEl.textContent ? 'block' : 'none';
+}
+
+function goTo(i, manual=false){
+  if(i === index) return;
+
+  const prev = index;
+  index = (i + imgs.length) % imgs.length;
+  const prevImg = imgs[prev];
+  const nextImg = imgs[index];
+
+  gsap.timeline()
+    .set(nextImg, { transformOrigin:"50% 50%", rotateY:90, autoAlpha:1 })
+    .to(prevImg, { rotateY:-90, autoAlpha:0, duration:0.5, ease:"power2.inOut" }, 0)
+    .to(nextImg, { rotateY:0, duration:0.7, ease:"power2.inOut" }, 0);
+
+  setCaption(shuffled[index]);
+  updateDots();
+  if(manual) resetAutoplay();
+}
+
+function updateDots(){
+  const dots = [...dotNav.children];
+  dots.forEach((d, idx)=> d.classList.toggle("active", idx===index));
+}
+
+function next(){ goTo(index+1); }
+function prev(){ goTo(index-1); }
+prevBtn.addEventListener('click', ()=>{ prev(); resetAutoplay(); });
+nextBtn.addEventListener('click', ()=>{ next(); resetAutoplay(); });
+
+function resetAutoplay(){
+  if(!autoPlay) return;
+  clearInterval(autoTimer);
+  autoTimer = setInterval(next, 4000);
+}
+playPauseBtn.addEventListener('click', ()=>{
+  autoPlay = !autoPlay;
+  if(autoPlay){
+    playPauseBtn.textContent = "Durdur";
+    resetAutoplay();
+  } else {
+    playPauseBtn.textContent = "Oynat";
+    clearInterval(autoTimer);
+  }
+});
+resetAutoplay();
+
+/* =========================
+   TIMELINE ANIMS
+========================= */
+gsap.utils.toArray(".timeline-item").forEach((item, idx)=>{
+  const side = idx % 2 === 0 ? -1 : 1;
+  gsap.fromTo(item, 
+    { x: 120 * side, autoAlpha:0 }, 
+    { x:0, autoAlpha:1, duration:1, ease:"power3.out",
+      scrollTrigger:{
+        trigger:item,
+        start:"top 80%",
+        toggleActions:"play none none reverse"
+      }
+    }
+  );
+});
+
+/* =========================
+   VANILLA TILT
+========================= */
+VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+  max: 8,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.2,
+});
+
+/* =========================
+   COUNTER (26 Haziran 2025)
+========================= */
+const relationshipStart = new Date(2025, 5, 26, 0, 0, 0);
+function updateCounter(){
+  const now = new Date();
+  const diff = now - relationshipStart;
+  if(diff < 0){
+    ["days","hours","minutes","seconds"].forEach(id => document.getElementById(id).textContent = "0");
+    return;
+  }
+  const seconds = Math.floor(diff/1000);
+  const minutes = Math.floor(seconds/60);
+  const hours = Math.floor(minutes/60);
+  const days = Math.floor(hours/24);
+
+  document.getElementById('days').textContent = days;
+  document.getElementById('hours').textContent = hours % 24;
+  document.getElementById('minutes').textContent = minutes % 60;
+  document.getElementById('seconds').textContent = seconds % 60;
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+
+/* =========================
+   LETTER OPEN
+========================= */
+const envFront = document.getElementById('envFront');
+const envLetter = document.getElementById('envLetter');
+const openLetterBtn = document.getElementById('openLetterBtn');
+let letterOpened = false;
+
+openLetterBtn.addEventListener('click', ()=>{
+  if(letterOpened) return;
+  letterOpened = true;
+
+  const tl = gsap.timeline();
+  tl.to(envFront, {
+    transformOrigin:"top center",
+    rotateX:-180,
+    duration:1.2,
+    ease:"power4.inOut"
+  })
+  .to(envLetter, {
+    opacity:1,
+    y:-40,
+    duration:1.3,
+    ease:"power3.out"
+  }, "-=0.4");
+
+  openLetterBtn.style.display = 'none';
+});
+
+/* =========================
+   AKROSTİŞ TYPER
+========================= */
+const akrostisLines = document.querySelectorAll('#akrostisLines .akrostis-line');
+ScrollTrigger.create({
+  trigger: "#akrostis",
+  start: "top 80%",
+  once: true,
+  onEnter: ()=>{
+    akrostisLines.forEach((el, i)=>{
+      setTimeout(()=>{
+        el.style.opacity = 1;
+        anime({
+          targets: el,
+          translateY: [-10,0],
+          opacity: [0,1],
+          duration: 900,
+          easing: 'easeOutQuad'
+        });
+      }, i*400);
+    });
+  }
+});
+
+/* =========================
+   EASTER EGG (click burst)
+========================= */
+document.addEventListener('click', (e)=>{
+  if(e.target.id === 'overlay') return; // overlay'e tıklarken patlatma olmasın
+  const x = e.clientX, y = e.clientY;
+  const burst = document.createElement('div');
+  burst.style.position='fixed';
+  burst.style.left=x+'px';
+  burst.style.top=y+'px';
+  burst.style.width='8px';
+  burst.style.height='8px';
+  burst.style.borderRadius='50%';
+  burst.style.background='#fff';
+  burst.style.zIndex=99999;
+  document.body.appendChild(burst);
+
+  anime({
+    targets: burst,
+    scale: [{ value: 1, duration: 0 }, { value: 18, duration: 600 }],
+    opacity: [{ value: 1, duration: 0 }, { value: 0, duration: 600 }],
+    easing: 'easeOutQuad',
+    complete: ()=>burst.remove()
+  });
+});
+
+/* ===== Kalp yağmuru + Parıltı ===== */
+function startHeartRain(){
+  for(let i=0;i<25;i++) spawnHeart();
+  setInterval(spawnHeart, 280);
+}
+function spawnHeart(){
+  const cont = document.getElementById('heartRain');
+  const el = document.createElement('div');
+  el.className = 'heart';
+  const left = Math.random() * 100;
+  const size = 18 + Math.random()*18;
+  const duration = 6 + Math.random()*6;
+  el.style.left = left + 'vw';
+  el.style.width = el.style.height = size + 'px';
+  el.style.animationDuration = duration + 's';
+  cont.appendChild(el);
+  setTimeout(()=> el.remove(), duration * 1000 + 500);
+}
+function startSparkles(){
+  const cont = document.getElementById('sparkles');
+  const COUNT = 120;
+  for(let i=0;i<COUNT;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    resetSpark(s, true);
+    cont.appendChild(s);
+    (function loop(el){
+      const t = 2000 + Math.random()*2000;
+      setTimeout(()=>{
+        resetSpark(el);
+        loop(el);
+      }, t);
+    })(s);
+  }
+}
+function resetSpark(el, first=false){
+  const x = Math.random()*100;
+  const y = Math.random()*100;
+  const delay = first ? (Math.random()*2000) : 0;
+  el.style.left = x + 'vw';
+  el.style.top = y + 'vh';
+  el.style.animationDelay = (delay/1000) + 's';
+}
+
+// Overlay click içinde efektleri başlat
+if(document.getElementById('overlay')){
+  document.getElementById('overlay').addEventListener('click', () => {
+    startHeartRain();
+    startSparkles();
+  });
+}
+
+</script>
+
+</body>
+</html>
