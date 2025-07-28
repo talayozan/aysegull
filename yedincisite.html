@@ -441,6 +441,21 @@ const correctPassword = "22062025";
 const music = document.getElementById("music");
 let currentGalleryVideo = null;
 
+// Fotoğraf ve video dosya adların (aynen attığın gibi, küçük-büyük harf dahil)
+const galleryImages = [
+  "72.JPEG","a2.jpg","a3.jpg","a4.jpg","a5.jpg","a6.jpg","a7.jpg","a8.jpg","a9.jpg","a10.jpg",
+  "a11.JPEG","a12.jpg","a13.jpg","a14.jpg","a15.jpg","a16.jpg","a17.jpg","a18.jpg","a19.jpg","a20.jpg",
+  "a22.jpg","a23.jpg","a24.jpg","a25.jpg","a26.jpg","a27.jpg","a28.jpg","a29.jpg","a30.jpg","a31.jpg",
+  "a32.jpg","a33.jpg","a34.jpg","a35.jpg","a36.jpg","a37.jpg","a38.jpg","a39.jpg","a40.JPEG","a41.JPEG",
+  "a42.jpg","a43.JPEG","a44.JPEG","a45.JPEG","a46.jpg","a47.JPEG","a48.jpg","a49.jpg","a50.jpg","a51.JPEG",
+  "a52.jpg","a53.JPEG","a54.JPG","a55.JPG","a56.jpg","a57.JPG","a58.jpg","a59.jpg","a60.JPEG","a61.JPEG",
+  "a62.jpg","a63.JPG","a64.jpg","a65.JPEG","a66.JPEG","a67.JPG","a68.JPG","a69.JPG","a70.JPEG","a72.JPEG",
+  "a73.JPEG","a74.JPEG","a75.JPEG","a76.JPEG","a77.JPEG","a78.JPEG","a79.JPEG","a80.JPEG"
+];
+const galleryVideos = [
+  "a21.mp4", "a71.MP4"
+];
+
 function checkPassword() {
   const entered = document.getElementById("password").value;
   if (entered === correctPassword) {
@@ -481,52 +496,44 @@ window.addEventListener('click', function(e){
   document.body.appendChild(s);
   setTimeout(()=>s.remove(), 1800);
 });
+
 function loadGallery() {
-  fetch("anilar/").then(res => res.text()).then(text => {
-    const parser = new DOMParser();
-    const html = parser.parseFromString(text, "text/html");
-    const links = html.querySelectorAll("a");
-    let videos = [], images = [];
-    links.forEach(link => {
-      const href = link.getAttribute("href");
-      if (!href) return;
-      if (href.match(/\.(mp4|MP4|mP4|Mp4)$/)) videos.push(href);
-      else if (href.match(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/)) images.push(href);
-    });
-    const vgal = document.getElementById("video-gallery");
-    const igal = document.getElementById("image-gallery");
-    videos.forEach(href => {
-      const div = document.createElement("div");
-      div.className = "gallery-thumb-video";
-      div.innerHTML = `
-        <video src="anilar/${href}" controls muted playsinline></video>
-        <span class="video-fs-icon" title="Tam ekran">⛶</span>
-      `;
-      const vid = div.querySelector('video');
-      div.querySelector('.video-fs-icon').onclick = (e) => {
-        e.stopPropagation();
-        if (vid.requestFullscreen) vid.requestFullscreen();
-        else if (vid.webkitRequestFullscreen) vid.webkitRequestFullscreen();
-      };
-      vid.addEventListener('play', () => { music.pause(); });
-      vid.addEventListener('pause', () => { music.play(); });
-      vid.addEventListener('ended', () => { music.play(); });
-      div.onclick = () => {
-        currentGalleryVideo = vid;
-        vid.pause();
-        openLightboxVideo("anilar/" + href);
-      };
-      vgal.appendChild(div);
-    });
-    images.forEach(href => {
-      const div = document.createElement("div");
-      div.className = "gallery-thumb";
-      div.innerHTML = `<img src="anilar/${href}"><span class="zoom-icon" title="Büyüt">🔍</span>`;
-      div.onclick = () => openLightboxImage("anilar/" + href);
-      igal.appendChild(div);
-    });
+  const vgal = document.getElementById("video-gallery");
+  const igal = document.getElementById("image-gallery");
+  // Önce videoları ekle
+  galleryVideos.forEach(href => {
+    const div = document.createElement("div");
+    div.className = "gallery-thumb-video";
+    div.innerHTML = `
+      <video src="anilar/${href}" controls muted playsinline></video>
+      <span class="video-fs-icon" title="Tam ekran">⛶</span>
+    `;
+    const vid = div.querySelector('video');
+    div.querySelector('.video-fs-icon').onclick = (e) => {
+      e.stopPropagation();
+      if (vid.requestFullscreen) vid.requestFullscreen();
+      else if (vid.webkitRequestFullscreen) vid.webkitRequestFullscreen();
+    };
+    vid.addEventListener('play', () => { music.pause(); });
+    vid.addEventListener('pause', () => { music.play(); });
+    vid.addEventListener('ended', () => { music.play(); });
+    div.onclick = () => {
+      currentGalleryVideo = vid;
+      vid.pause();
+      openLightboxVideo("anilar/" + href);
+    };
+    vgal.appendChild(div);
+  });
+  // Sonra fotoğrafları ekle
+  galleryImages.forEach(href => {
+    const div = document.createElement("div");
+    div.className = "gallery-thumb";
+    div.innerHTML = `<img src="anilar/${href}"><span class="zoom-icon" title="Büyüt">🔍</span>`;
+    div.onclick = () => openLightboxImage("anilar/" + href);
+    igal.appendChild(div);
   });
 }
+
 function openLightboxImage(src) {
   const lb = document.getElementById('lightbox-modal');
   lb.classList.add('active');
@@ -550,5 +557,6 @@ document.getElementById('lightbox-modal').onclick = function(e) {
   }
 };
 </script>
+
 </body>
 </html>
